@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@{
+    ViewData["Title"] = "";
+    Layout = "~/Views/Shared/_Layout_Public.cshtml";
+}
+<div class="row justify-content-center">
+
+    <div class="col-md-6 col-md-offset-3">
+        <div class="register-box" style="width:100%;">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg"><label> @(_localizer["Secure Sign In"])</label></p>
+
+                <form action="@Url.Action("Listing","Business")" method="post">
+                    <p>@(_localizer["We texted your phone"]) +XX XXXXXXX55. @(_localizer["Please enter the code to activate."])</p>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="@(_localizer["Code"])">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-keyboard"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <button type="submit" class="btn btn-primary btn-block">@(_localizer["Authenticate"])</button>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr />
+                            <a href="login.html" class="text-center">@(_localizer["Send code again"])</a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+            </div>
+            <!-- /.form-box -->
+
+        </div>
+        <!-- /.register-box -->
+    </div>
+</div>
+

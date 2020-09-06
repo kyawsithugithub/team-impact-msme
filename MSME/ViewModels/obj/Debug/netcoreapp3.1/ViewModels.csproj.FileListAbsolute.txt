@@ -1,0 +1,11 @@
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\bin\Debug\netcoreapp3.1\ViewModels.deps.json
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\bin\Debug\netcoreapp3.1\ViewModels.dll
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\bin\Debug\netcoreapp3.1\ViewModels.pdb
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\bin\Debug\netcoreapp3.1\my\ViewModels.resources.dll
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.TSA.my.resources
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.csproj.GenerateResource.cache
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.AssemblyInfoInputs.cache
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.AssemblyInfo.cs
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\my\ViewModels.resources.dll
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.dll
+C:\Users\thant\OneDrive\Business\Projects\MSME\Project\MSME\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.pdb

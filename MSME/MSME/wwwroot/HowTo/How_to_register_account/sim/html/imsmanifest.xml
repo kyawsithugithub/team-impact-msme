@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<manifest identifier="MANIFEST-abca458b6" version="1.1" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+<organizations default="ORG-abca458b6">
+	<organization identifier="ORG-abca458b6">
+		<title>How to Register Account in MSME Web Portal</title>
+		
+		<item identifier="SCO" identifierref="SCO1" isvisible="true">
+			<title>How to Register Account in MSME Web Portal</title>
+			<adlcp:masteryscore>65</adlcp:masteryscore>
+		</item>
+
+		<metadata>
+			<schema>ADL SCORM</schema>
+			<schemaversion>1.2</schemaversion>
+			<imsmd:lom>
+				<imsmd:general>
+				<imsmd:catalogentry>
+					<imsmd:catalog>How to Register Account in MSME Web Portal</imsmd:catalog>
+					<imsmd:entry>
+						<imsmd:langstring>How to Register Account in MSME Web Portal</imsmd:langstring>
+					</imsmd:entry>
+				</imsmd:catalogentry>
+				<imsmd:title>
+					<imsmd:langstring>How to Register Account in MSME Web Portal</imsmd:langstring>
+				</imsmd:title>
+				<imsmd:description>
+					<imsmd:langstring><![CDATA[How to Register Account in MSME Web Portal]]></imsmd:langstring>
+				</imsmd:description>
+				<imsmd:keyword>
+					<imsmd:langstring>N/A</imsmd:langstring>
+				</imsmd:keyword>
+				</imsmd:general>
+				<imsmd:lifecycle>
+					<imsmd:version>
+						<imsmd:langstring>1.0</imsmd:langstring>
+					</imsmd:version>
+					<imsmd:status>
+						<imsmd:source>
+							<imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+						</imsmd:source>
+						<imsmd:value>
+							<imsmd:langstring xml:lang="x-none">Final</imsmd:langstring>
+						</imsmd:value>
+					</imsmd:status>
+				</imsmd:lifecycle>
+				<imsmd:metametadata>
+					<imsmd:metadatascheme>ADL SCORM 1.2</imsmd:metadatascheme>
+					<imsmd:language>en-US</imsmd:language>
+				</imsmd:metametadata>
+				<imsmd:technical>
+				<imsmd:format>text/html</imsmd:format>
+				<imsmd:location type="URI">.</imsmd:location>
+				<imsmd:requirement>
+					<imsmd:type>
+					<imsmd:source>
+						<imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+					</imsmd:source>
+					<imsmd:value>
+						<imsmd:langstring xml:lang="x-none">Browser</imsmd:langstring>
+					</imsmd:value>
+					</imsmd:type>
+					<imsmd:name>
+					<imsmd:source>
+						<imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+					</imsmd:source>
+					<imsmd:value>
+						<imsmd:langstring xml:lang="x-none">Microsoft Internet Explorer</imsmd:langstring>
+					</imsmd:value>
+					</imsmd:name>
+					<imsmd:minimumversion>7.0</imsmd:minimumversion>
+				</imsmd:requirement>
+				</imsmd:technical>
+				<imsmd:rights>
+				<imsmd:cost>
+					<imsmd:source>
+					<imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+					</imsmd:source>
+					<imsmd:value>
+					<imsmd:langstring xml:lang="x-none">no</imsmd:langstring>
+					</imsmd:value>
+				</imsmd:cost>
+				<imsmd:copyrightandotherrestrictions>
+					<imsmd:source>
+					<imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+					</imsmd:source>
+					<imsmd:value>
+					<imsmd:langstring xml:lang="x-none">yes</imsmd:langstring>
+					</imsmd:value>
+				</imsmd:copyrightandotherrestrictions>
+				</imsmd:rights>
+				<imsmd:classification>
+					<imsmd:purpose>
+						<imsmd:source>
+							<imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+						</imsmd:source>
+						<imsmd:value>
+							<imsmd:langstring xml:lang="x-none">Educational Objective</imsmd:langstring>
+						</imsmd:value>
+					</imsmd:purpose>
+					<imsmd:description>
+						<imsmd:langstring>N/A</imsmd:langstring>
+					</imsmd:description>
+					<imsmd:keyword>
+						<imsmd:langstring>N/A</imsmd:langstring>
+					</imsmd:keyword>
+				</imsmd:classification>
+			</imsmd:lom>
+			</metadata>
+
+	</organization>
+</organizations>
+<resources>
+	<resource identifier="SCO1" type="webcontent" adlcp:scormtype="sco" href="index.htm">
+<file href="index.htm" />
+<file href="sim_assessment.htm" />
+<file href="sim_auto_playback.htm" />
+<file href="sim_self_test.htm" />
+<file href="sim_standard.htm" />
+<file href="assets/css/debug_styles.css" />
+<file href="assets/css/engine.css" />
+<file href="assets/htm/blank.htm" />
+<file href="assets/htm/comment.htm" />
+<file href="assets/htm/debugger.htm" />
+<file href="assets/htm/result.htm" />
+<file href="assets/htm/usernameprompt.htm" />
+<file href="assets/img/ancile.gif" />
+<file href="assets/img/arrow.png" />
+<file href="assets/img/blank.gif" />
+<file href="assets/img/bookmark.gif" />
+<file href="assets/img/branch_icon.gif" />
+<file href="assets/img/comment.gif" />
+<file href="assets/img/completion.gif" />
+<file href="assets/img/completion.png" />
+<file href="assets/img/debug.gif" />
+<file href="assets/img/del_blue.gif" />
+<file href="assets/img/done.png" />
+<file href="assets/img/done_icon.png" />
+<file href="assets/img/flashplayer_100x100.jpg" />
+<file href="assets/img/go_blue.gif" />
+<file href="assets/img/line2.png" />
+<file href="assets/img/link.gif" />
+<file href="assets/img/link_arrow.png" />
+<file href="assets/img/loading.gif" />
+<file href="assets/img/logo.jpg" />
+<file href="assets/img/logo.png" />
+<file href="assets/img/menu_branch_connector.gif" />
+<file href="assets/img/menu_branch_extend.gif" />
+<file href="assets/img/menu_branch_single.gif" />
+<file href="assets/img/menu_here.gif" />
+<file href="assets/img/menu_minus.gif" />
+<file href="assets/img/menu_page.gif" />
+<file href="assets/img/menu_plus.gif" />
+<file href="assets/img/menu_visited.gif" />
+<file href="assets/img/page.gif" />
+<file href="assets/img/spacer.gif" />
+<file href="assets/img/ss_icon.gif" />
+<file href="assets/img/step.gif" />
+<file href="assets/img/step.png" />
+<file href="assets/img/step_icon.gif" />
+<file href="assets/img/step_win_icon.gif" />
+<file href="assets/img/step_win_icon.png" />
+<file href="assets/img/ui_bkgd.png" />
+<file href="assets/img/ui_bottom.gif" />
+<file href="assets/img/ui_bottom_left.gif" />
+<file href="assets/img/ui_bottom_right.gif" />
+<file href="assets/img/ui_left.gif" />
+<file href="assets/img/ui_line.png" />
+<file href="assets/img/ui_right.gif" />
+<file href="assets/img/ui_top.gif" />
+<file href="assets/img/ui_top_left.gif" />
+<file href="assets/img/ui_top_right.gif" />
+<file href="assets/js/audio-html5.js" />
+<file href="assets/js/audio.js" />
+<file href="assets/js/controller.js" />
+<file href="assets/js/dialog.js" />
+<file href="assets/js/engine.js" />
+<file href="assets/js/eventhandler.js" />
+<file href="assets/js/group.js" />
+<file href="assets/js/hotspot.js" />
+<file href="assets/js/init.js" />
+<file href="assets/js/ios-input.js" />
+<file href="assets/js/note-animator.js" />
+<file href="assets/js/note.js" />
+<file href="assets/js/point.js" />
+<file href="assets/js/step.js" />
+<file href="assets/js/timeline.js" />
+<file href="assets/js/timer-control.js" />
+<file href="assets/js/ui.js" />
+<file href="assets/js/utils.js" />
+<file href="assets/js/action/action-animator.js" />
+<file href="assets/js/action/action-audio-html5.js" />
+<file href="assets/js/action/action-audio.js" />
+<file href="assets/js/action/action.js" />
+<file href="assets/js/action/dragdrop.js" />
+<file href="assets/js/action/edit-exact.js" />
+<file href="assets/js/action/edit-freetext.js" />
+<file href="assets/js/action/edit-regex.js" />
+<file href="assets/js/action/edit.js" />
+<file href="assets/js/action/key.js" />
+<file href="assets/js/action/mouse.js" />
+<file href="assets/js/comm-factory/comm-factory-aicc.js" />
+<file href="assets/js/comm-factory/comm-factory-cookie.js" />
+<file href="assets/js/comm-factory/comm-factory-custom.js" />
+<file href="assets/js/comm-factory/comm-factory-scorm12.js" />
+<file href="assets/js/comm-factory/comm-factory-scorm2004.js" />
+<file href="assets/js/comm-factory/comm-factory.js" />
+<file href="assets/js/comm-factory/ostynscormtime.js" />
+<file href="assets/js/comm-factory/aicc/comm-support.js" />
+<file href="assets/js/comm-factory/scorm12/comm-support.js" />
+<file href="assets/js/comm-factory/scorm2004/comm-support.js" />
+<file href="assets/js/lib/cvsGraphCtx1v01.js" />
+<file href="assets/js/lib/excanvas-modified.js" />
+<file href="assets/js/lib/iscroll-min.js" />
+<file href="assets/js/lib/mootools-core-1.3.1-full-compat-yc.js" />
+<file href="assets/js/lib/mootools-more-1.3.1.1.js" />
+<file href="assets/js/lib/objcookie.js" />
+<file href="assets/js/lib/rgbaColor.js" />
+<file href="assets/js/lib/swfobject.js" />
+<file href="assets/swf/action-audio.swf" />
+<file href="assets/swf/aicc.swf" />
+<file href="assets/swf/aiccadapter.swf" />
+<file href="assets/swf/aiccproxy.swf" />
+<file href="assets/swf/audio.swf" />
+<file href="assets/swf/expressInstall.swf" />
+<file href="conf/conf.js" />
+<file href="conf/conf_custom.js" />
+<file href="conf/lang.js" />
+<file href="conf/structure.js" />
+<file href="conf/template.css" />
+<file href="content/audio/typing.mp3" />
+<file href="content/images/1566131098.jpg" />
+<file href="content/images/1733660125.jpg" />
+<file href="content/images/1980595931.jpg" />
+<file href="content/images/225643518.jpg" />
+<file href="content/images/323543614.jpg" />
+<file href="content/images/423719150.jpg" />
+<file href="content/images/743194356.jpg" />
+<file href="content/images/929876620.jpg" />
+<file href="content/images/c0000001.png" />
+<file href="content/images/c0000002.png" />
+<file href="content/images/c0000003.png" />
+<file href="content/images/c0000004.png" />
+<file href="content/images/c0000005.png" />
+<file href="content/images/c0000006.png" />
+<file href="content/images/c0000007.png" />
+<file href="content/images/c0000008.png" />
+<file href="content/images/c0000009.png" />
+<file href="content/images/c0000010.png" />
+<file href="content/images/c0000011.png" />
+<file href="content/images/c0000012.png" />
+<file href="content/images/c0000015.png" />
+<file href="content/images/c0000016.png" />
+<file href="content/images/c0000017.png" />
+<file href="content/images/c0000018.png" />
+<file href="content/images/c0000019.png" />
+<file href="content/images/c0000020.png" />
+<file href="content/images/c0000021.png" />
+<file href="content/images/c0000022.png" />
+<file href="content/images/c0000023.png" />
+<file href="content/images/c0000024.png" />
+<file href="content/images/c0000025.png" />
+<file href="content/images/c0000026.png" />
+<file href="content/images/c0000027.png" />
+<file href="content/images/c0000028.png" />
+<file href="content/images/c0000029.png" />
+<file href="content/images/c0000030.png" />
+<file href="content/images/c0000031.png" />
+<file href="content/images/c0000032.png" />
+<file href="content/images/c0000033.png" />
+<file href="content/images/c0000034.png" />
+<file href="content/images/f1227351809.jpg" />
+<file href="content/images/f1444937157.jpg" />
+<file href="content/images/f2017299317.jpg" />
+<file href="content/images/f2044924974.jpg" />
+<file href="content/images/f2116129195.jpg" />
+<file href="content/images/f23311033.jpg" />
+<file href="content/images/f392400125.jpg" />
+<file href="content/images/f41454962.jpg" />
+<file href="content/images/i0000001.jpg" />
+<file href="content/images/i0000002.jpg" />
+<file href="content/images/i0000003.jpg" />
+<file href="content/images/i0000004.jpg" />
+<file href="content/images/i0000005.jpg" />
+<file href="content/images/i0000006.jpg" />
+<file href="content/images/i0000008.jpg" />
+<file href="content/images/i0000009.jpg" />
+<file href="content/images/i0000010.jpg" />
+<file href="content/images/i0000011.jpg" />
+<file href="content/images/i0000012.jpg" />
+<file href="content/images/i0000013.jpg" />
+<file href="content/images/i0000014.jpg" />
+<file href="content/images/i0000015.jpg" />
+<file href="content/images/i0000016.jpg" />
+<file href="content/images/i0000017.jpg" />
+<file href="content/images/i0000018.jpg" />
+<file href="content/images/o0000014.png" />
+<file href="content/images/o0000017.png" />
+<file href="content/images/x0000001.png" />
+<file href="content/note-icons/noteicon_0.png" />
+<file href="content/note-icons/noteicon_1.png" />
+<file href="content/note-icons/noteicon_2.png" />
+<file href="content/note-icons/noteicon_3.png" />
+<file href="content/note-icons/noteicon_4.png" />
+<file href="content/note-icons/noteicon_5.png" />
+<file href="content/note-icons/noteicon_6.png" />
+<file href="content/note-icons/noteicon_7.png" />
+<file href="printable/printable.htm" />
+<file href="printable/images/o0000014.png" />
+<file href="printable/images/o0000017.png" />
+<file href="printable/images/screenshot.png" />
+<file href="printable/images/x0000001.png" />
+<file href="skin/action_dnd.png" />
+<file href="skin/action_edit.png" />
+<file href="skin/action_key.png" />
+<file href="skin/action_mouse_leftclick.png" />
+<file href="skin/action_mouse_leftdoubleclick.png" />
+<file href="skin/action_mouse_rightclick.png" />
+<file href="skin/apple-touch-icon-precomposed.png" />
+<file href="skin/arrow_left.gif" />
+<file href="skin/arrow_right.gif" />
+<file href="skin/audio_controls_disable.gif" />
+<file href="skin/audio_controls_enable.gif" />
+<file href="skin/audio_controls_loading.gif" />
+<file href="skin/audio_controls_pause.gif" />
+<file href="skin/audio_controls_play.gif" />
+<file href="skin/audio_controls_stop.gif" />
+<file href="skin/audio_transcript.gif" />
+<file href="skin/close.gif" />
+<file href="skin/exit.gif" />
+<file href="skin/info.png" />
+<file href="skin/input-bar-help-close.png" />
+<file href="skin/input-bar-help.png" />
+<file href="skin/ios_audio_promt_header.png" />
+<file href="skin/ios_audio_promt_pointer.png" />
+<file href="skin/ios_input_close.png" />
+<file href="skin/ios_input_key.png" />
+<file href="skin/ios_input_key_active.png" />
+<file href="skin/ios_input_mouse.png" />
+<file href="skin/ios_input_mouse_active.png" />
+<file href="skin/ios_input_open.png" />
+<file href="skin/ios_input_sep.png" />
+<file href="skin/menu_config.png" />
+<file href="skin/menu_group.png" />
+<file href="skin/menu_minus.png" />
+<file href="skin/menu_pin_false.png" />
+<file href="skin/menu_pin_true.png" />
+<file href="skin/menu_plus.png" />
+<file href="skin/menu_print.png" />
+<file href="skin/menu_resizer.png" />
+<file href="skin/menu_skip.png" />
+<file href="skin/menu_status_default.png" />
+<file href="skin/menu_status_here.png" />
+<file href="skin/menu_status_visited.png" />
+<file href="skin/menu_win_contract.png" />
+<file href="skin/menu_win_expand.png" />
+<file href="skin/minus.png" />
+<file href="skin/open.gif" />
+<file href="skin/playback_controls_pause.gif" />
+<file href="skin/playback_controls_play.gif" />
+<file href="skin/plus.png" />
+<file href="skin/skin.css" />
+<file href="skin/spacer.gif" />
+
+	</resource>
+</resources>
+</manifest>

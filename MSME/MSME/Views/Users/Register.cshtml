@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@model MSME.Models.User
+@{
+    ViewData["Title"] = "";
+    Layout = "~/Views/Shared/_Layout_Public.cshtml";
+}
+<div class="row justify-content-center">
+   
+    <div class="col-md-6 col-md-offset-3" >
+        <div class="register-box" style="width:100%;">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">@(_localizer["Create Your Account"]) <a href="~/HowTo/How_to_register_account/sim/html/index.htm" class="pull-right" target="_blank"><i class="fa fa-question-circle"></i></a></p>
+
+                <form action="@Url.Action("Activate","Users")" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="@(_localizer["Full name"])">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="@(_localizer["Email (Optional)"])">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button type="button" class="btn btn-default">@(_localizer["+95"])</button>
+                        <input type="number" class="form-control" placeholder="@(_localizer["Mobile No. (e.g 0912345678)"])">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-mobile"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="text-danger">@_localizer["Please remember this mobile number to sign in"]</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="@(_localizer["Password"])">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="@(_localizer["Retype password"])">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <button type="submit" class="btn btn-primary btn-block">@(_localizer["Register"])</button>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+                <hr />
+                <a href="@Url.Action("SignIn","Users")" class="text-center">@(_localizer["Sign In"])</a>
+            </div>
+            <!-- /.form-box -->
+
+        </div>
+        <!-- /.register-box -->
+    </div>
+</div>
+

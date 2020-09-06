@@ -1,0 +1,233 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<MSME.Models._Shared> SharedLocalizer
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>@ViewData["Title"]</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="~/themes/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/themes/dist/css/adminlte.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="~/themes/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 1300px;
+        }
+    </style>
+
+    <!-- jQuery -->
+    <script src="~/themes/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/themes/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+        <div class="header-mid">
+            <div class="container">
+                <div class="row" style="margin:10px;">
+                    <div class="col-md-2 text-center hidden-xs">
+                        <div class="logo">
+                            <a href="https://msmewebportal.gov.mm"><img src="https://msmewebportal.gov.mm/rtad/assets/images/moi_logo.png" style="height:100px; width:100px; object-fit:scale-down; margin-top:15px;" class="img-responsive lazyload" alt=""></a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 text-center logo_title">
+
+
+                        <h4 class="col-xs-12 text-uppercase">
+                            @SharedLocalizer["THE REPUBLIC OF THE UNION OF MYANMAR"]
+                        </h4>
+                        <h2 class="col-xs-12 text-uppercase">
+                            @SharedLocalizer["MINISTRY OF PLANNING, FINANCE AND INDUSTRY"]
+                        </h2>
+                        <h3 class="col-xs-12">@SharedLocalizer["Department of Small and Medium Enterprises Development"]</h3>
+
+
+                    </div>
+                    <div class="col-md-2 text-center hidden-xs">
+                        <a href="https://msmewebportal.gov.mm"><img src="https://msmewebportal.gov.mm/rtad/assets/images/sme_logo.png" class="img-responsive lazyload" alt="" style="padding-top: 7px;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-primary">
+            <div class="container">
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav text-bold">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Home")" class="nav-link text-white">@SharedLocalizer["HOME"]</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle  text-white">
+                                @SharedLocalizer["ABOUT"]
+                            </a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Vision of SME Policy"]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Brief History"]</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle  text-white">
+                                @SharedLocalizer["POLICY & LAW"]
+                            </a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Small and Medium Enterprise Development Policy"]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Small and Medium Enterprise Development Law"]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Small and Medium Enterprise Development Rule"]</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle  text-white">
+                                @SharedLocalizer["HEAD OFFICE & BRANCHES"]
+                            </a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["15 States/ Region & 39 Districts"]</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle  text-white">
+                                @SharedLocalizer["REGISTRAION"]
+                            </a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Registration Procedures"]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Requirements for Registration"]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Requirements for Payment with \"MPU\""]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Requirements for Payment with \"Visa, Master, JCB and UnionPay\""]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["Requirements for Payment at Myanmar Economic Bank"]</a></li>
+                                <li><a href="#" class="dropdown-item">@SharedLocalizer["FAQs"]</a></li>
+                                <li><a href="@Url.Action("Register","Users")" class="dropdown-item">@SharedLocalizer["To apply Registration"]</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-white">@SharedLocalizer["CONTACT"]</a>
+                        </li>
+                        @{
+                            if (ViewBag.Login == null)
+                            {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("SignIn","Users")" class="nav-link text-white">@SharedLocalizer["LOGIN"]</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item dropdown">
+                                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle  text-white">
+                                        @SharedLocalizer["MY ACCOUNT"]
+                                    </a>
+                                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                        <li><a href="#" class="dropdown-item">@SharedLocalizer["Notification"]</a></li>
+                                        <li><a href="@Url.Action("Listing","Business")" class="dropdown-item">@SharedLocalizer["Enterprise"]</a></li>
+                                        <li><a href="#" class="dropdown-item">@SharedLocalizer["Edit Profile"]</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+
+
+                </div>
+
+                <!-- Right navbar links-->
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+
+                    <li class="nav-item">
+                        @await Html.PartialAsync("_SelectLanguagePartial")
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark"> @ViewData["Title"]</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                @{
+                                    if (ViewBag.Navi != null)
+                                    {
+                                        var navi = (List<string>)ViewBag.Navi;
+                                        int i = 1;
+                                        foreach (var item in navi)
+                                        {
+                                            if (i < navi.Count)
+                                            {
+
+                                                <li class="breadcrumb-item"><a href="#"> @item</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li class="breadcrumb-item active">@item</li>
+                                            }
+
+                                            i++;
+                                        }
+                                    }
+                                }
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <div class="content">
+                <div class="container">
+                    @RenderBody()
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">
+                Team Impact
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 2020 <a href="#">MSME</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- REQUIRED SCRIPTS -->
+    <!-- AdminLTE App -->
+    <script src="~/themes/dist/js/adminlte.min.js"></script>
+</body>
+</html>

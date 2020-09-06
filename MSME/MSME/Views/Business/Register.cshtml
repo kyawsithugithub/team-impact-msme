@@ -1,0 +1,1963 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@{
+    ViewData["Title"] = _localizer["Register"];
+    Layout = "~/Views/Shared/_Layout_Public.cshtml";
+
+    List<string> navi = new List<string>();
+    navi.Add("MSME");
+    navi.Add("Business");
+    navi.Add("Register");
+    ViewBag.Navi = navi;
+}
+
+<style>
+    #grad1 {
+        /*background-color:  #9C27B0;
+       background-image: linear-gradient(120deg, #FF4081, #81D4FA)*/
+    }
+
+    #msform {
+        text-align: center;
+        position: relative;
+        margin-top: 20px
+    }
+
+        #msform fieldset .form-card {
+            background: white;
+            border: 0 none;
+            border-radius: 0px;
+            box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+            padding: 20px 40px 30px 40px;
+            box-sizing: border-box;
+            width: 94%;
+            margin: 0 3% 20px 3%;
+            position: relative
+        }
+
+        #msform fieldset {
+            background: white;
+            border: 0 none;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            width: 100%;
+            margin: 0;
+            padding-bottom: 20px;
+            position: relative
+        }
+
+            #msform fieldset:not(:first-of-type) {
+                display: none
+            }
+
+            #msform fieldset .form-card {
+                text-align: left;
+                color: #9E9E9E
+            }
+
+        /*#msform input,
+        #msform textarea {
+            padding: 0px 8px 4px 8px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: 0px;
+            margin-bottom: 25px;
+            margin-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: montserrat;
+            color: #2C3E50;
+            font-size: 16px;
+            letter-spacing: 1px
+        }
+
+            #msform input:focus,
+            #msform textarea:focus {
+                -moz-box-shadow: none !important;
+                -webkit-box-shadow: none !important;
+                box-shadow: none !important;
+                border: none;
+                font-weight: bold;
+                border-bottom: 2px solid skyblue;
+                outline-width: 0
+            }*/
+
+        #msform .action-button {
+            width: 100px;
+            background: skyblue;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 0px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px
+        }
+
+            #msform .action-button:hover,
+            #msform .action-button:focus {
+                box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
+            }
+
+        #msform .action-button-previous {
+            width: 100px;
+            background: #616161;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 0px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px
+        }
+
+            #msform .action-button-previous:hover,
+            #msform .action-button-previous:focus {
+                box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+            }
+
+    select.list-dt {
+        border: none;
+        outline: 0;
+        border-bottom: 1px solid #ccc;
+        padding: 2px 5px 3px 5px;
+        margin: 2px
+    }
+
+        select.list-dt:focus {
+            border-bottom: 2px solid skyblue
+        }
+
+    .card {
+        z-index: 0;
+        border: none;
+        border-radius: 0.5rem;
+        position: relative
+    }
+
+    .fs-title {
+        font-size: 25px;
+        color: #2C3E50;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-align: left
+    }
+
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        color: lightgrey
+    }
+
+        #progressbar .active {
+            color: #000000
+        }
+
+        #progressbar li {
+            list-style-type: none;
+            font-size: 12px;
+            width: 25%;
+            float: left;
+            position: relative
+        }
+
+        #progressbar #account:before {
+            font-family: FontAwesome;
+            content: "\f0b1"
+        }
+
+        #progressbar #personal:before {
+            font-family: FontAwesome;
+            content: "\f0ca"
+        }
+
+        #progressbar #payment:before {
+            font-family: FontAwesome;
+            content: "\f00a"
+        }
+
+        #progressbar #confirm:before {
+            font-family: FontAwesome;
+            content: "\f00c"
+        }
+
+        #progressbar li:before {
+            width: 50px;
+            height: 50px;
+            line-height: 45px;
+            display: block;
+            font-size: 18px;
+            color: #ffffff;
+            background: lightgray;
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            padding: 2px
+        }
+
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: lightgray;
+            position: absolute;
+            left: 0;
+            top: 25px;
+            z-index: -1
+        }
+
+        #progressbar li.active:before,
+        #progressbar li.active:after {
+            background: skyblue
+        }
+
+    .radio-group {
+        position: relative;
+        margin-bottom: 25px
+    }
+
+    .radio {
+        display: inline-block;
+        width: 204;
+        height: 104;
+        border-radius: 0;
+        background: lightblue;
+        box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        cursor: pointer;
+        margin: 8px 2px
+    }
+
+        .radio:hover {
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+        }
+
+        .radio.selected {
+            box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+        }
+
+    .fit-image {
+        width: 100%;
+        object-fit: cover
+    }
+</style>
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-12 col-md-12 col-lg-12 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Register your business as MSME</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform">
+                            <!-- progressbar -->
+                            <ul id="progressbar" style="margin-left:-40px;">
+                                <li class="active" id="account"><strong>Enterprise Profile</strong></li>
+                                <li id="personal"><strong>Facts</strong></li>
+                                <li id="payment"><strong>Survey</strong></li>
+                                <li id="confirm"><strong>Finish</strong></li>
+                            </ul> <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Main Information</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Enterprise Sector</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary1" name="r1">
+                                                <label for="radioPrimary1">
+                                                    Manufacturing &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary2" name="r1">
+                                                <label for="radioPrimary2">
+                                                    Sale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary3" name="r1">
+                                                <label for="radioPrimary3">
+                                                    Service&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary4" name="r1">
+                                                <label for="radioPrimary4">
+                                                    Other
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Passport Photo</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span class="text-bold">Dimension for Passport(Width= 1 Inch and Height 1.2 Inch)</span><br />
+                                            <img src="~/themes/dist/img/avatar5.png" style="width:130px;height:150px;" class="border" alt="Alternate Text" /> <br />
+                                            <input type="file" name="name" class="" value="" />
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('Dimension for Passport(Width= 1 Inch and Height 1.2 Inch)');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Company/ Business Name(MM)</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('Please type your business name using only mayanmar font(Unicode).');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Company/ Business Name(Eng)</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('Please type your business name with English language');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Address(MM)</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <textarea class="form-control" rows="3" placeholder=""></textarea>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('Please type address with Myanmar Language <br> အမှတ်(...)၊ ........လမ်း၊ အမှတ်(..)ရပ်ကွက်၊ ..မြို့နယ်၊...မြို့။');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Address(Eng)</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <textarea class="form-control" rows="3" placeholder=""></textarea>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('Please type address with English langauge');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">State/Region/Nay pyi taw territory</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select name="business_division_id" id="business_division_id" class="form-control">
+                                                <option value="1">Ayeyarwady</option>
+                                                <option value="2">Bago</option>
+                                                <option value="3">Chin</option>
+                                                <option value="4">Kachin</option>
+                                                <option value="5">Kayah</option>
+                                                <option value="6">Kayin</option>
+                                                <option value="7">Mandalay</option>
+                                                <option value="8">Magway</option>
+                                                <option value="9">Mon</option>
+                                                <option value="10">Naypyitaw</option>
+                                                <option value="11">Rakhine</option>
+                                                <option value="12">Sagaing</option>
+                                                <option value="13">Shan</option>
+                                                <option value="14">Tanintharyi</option>
+                                                <option value="15" selected="">Yangon</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Township</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select name="business_township_id" id="business_township_id" class="form-control">
+
+                                                <option value="334">(East) Dagon Myothit Township</option>
+                                                <option value="335">(North) Dagon Myothit Township</option>
+                                                <option value="337">(South) Dagon Myothit Township</option>
+                                                <option value="329">Ahlone Township</option>
+                                                <option value="330">Bahan Township</option>
+                                                <option value="331">Botahtaung Township</option>
+                                                <option value="332">Cocokyun Township</option>
+                                                <option value="336">Dagon Myothit Seikkan Township</option>
+                                                <option value="333">Dagon Township</option>
+                                                <option value="338">Dala Township</option>
+                                                <option value="339">Dawbon Township</option>
+                                                <option value="340" selected="">Hlaing Township</option>
+                                                <option value="341">Hlaingtharyar Township</option>
+                                                <option value="342">Hlegu Township</option>
+                                                <option value="343">Hmawbi Township</option>
+                                                <option value="344">Htantabin Township</option>
+                                                <option value="345">Insein Township</option>
+                                                <option value="346">Kamaryut Township</option>
+                                                <option value="347">Kawhmu Township</option>
+                                                <option value="348">Khayan Township</option>
+                                                <option value="349">Kungyangone Township</option>
+                                                <option value="350">Kyauktada Township</option>
+                                                <option value="352">Kyauktan Township</option>
+                                                <option value="353">Kyeemyindaing Township</option>
+                                                <option value="354">Lanmadaw Township</option>
+                                                <option value="355">Lathar Township</option>
+                                                <option value="356">Mayangone Township</option>
+                                                <option value="358">Mingalar Taung Nyunt Township</option>
+                                                <option value="357">Mingalardon Township</option>
+                                                <option value="365">North Okkalapa Township</option>
+                                                <option value="360">Pabedan Township</option>
+                                                <option value="361">Pazundaung Township</option>
+                                                <option value="362">Sanchaung Township</option>
+                                                <option value="363">Seikgyikhanaungto Township</option>
+                                                <option value="364">Seikkan Township</option>
+                                                <option value="366">Shwe Pyi Thar Township</option>
+                                                <option value="367">South Okkalapa Township</option>
+                                                <option value="370">Taik Kyi Township</option>
+                                                <option value="371">Tamwe Township</option>
+                                                <option value="372">Thaketa Township</option>
+                                                <option value="373">Thanlyin Township</option>
+                                                <option value="374">Thingangyun Township</option>
+                                                <option value="375">Thongwa Township</option>
+                                                <option value="376">Twantay Township</option>
+                                                <option value="377">Yankin Township</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Fax No.</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Email</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Contact Person</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Phone Number</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Enterprise Profile</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Date of Company Establishment</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div> <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Date of Business/Product Launch</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div> <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Brand Name & Trade mark</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Brand Image</label><br />
+                                            <input type="file" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="~/themes/dist/img/AdminLTELogo.png" style="width:200px;height:200px;" class="border" alt="Alternate Text" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <h2 class="fs-title">Facts about Owner</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Owner Name(MM)</label><span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Owner Name(Eng)</label><span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">NRC Number</label><span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="form-control select2" id="state_number_mm" name="state_number_mm">
+                                                <option value="1">
+                                                    1
+                                                </option>
+                                                <option value="2">
+                                                    2
+                                                </option>
+                                                <option value="3">
+                                                    3
+                                                </option>
+                                                <option value="4">
+                                                    4
+                                                </option>
+                                                <option value="5">
+                                                    5
+                                                </option>
+                                                <option value="6">
+                                                    6
+                                                </option>
+                                                <option value="7">
+                                                    7
+                                                </option>
+                                                <option value="8">
+                                                    8
+                                                </option>
+                                                <option value="9" selected="">
+                                                    9
+                                                </option>
+                                                <option value="10">
+                                                    10
+                                                </option>
+                                                <option value="11">
+                                                    11
+                                                </option>
+                                                <option value="12">
+                                                    12
+                                                </option>
+                                                <option value="13">
+                                                    13
+                                                </option>
+                                                <option value="14">
+                                                    14
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <select class="form-control" name="nrc_id" id="nrc_id"><option value="287">AhMaYa</option><option value="288">AhMaZa</option><option value="289">KhaAhZa</option><option value="290">KhaMaSa</option><option value="291">KaMaNa</option><option value="292">KaPaTa</option><option value="293">KaSaNa</option><option value="294">LaWaNa</option><option value="295">MaTaYa</option><option value="296">MaYaMa</option><option value="297">MaNaMa</option><option value="298">MaYaTa</option><option value="299">MaNaTa</option><option value="300">MaKaNa</option><option value="301">MaKhaNa</option><option value="302">MaHaMa</option><option value="303">MaLaNa</option><option value="304">MaMaNa</option><option value="305">MaThaNa</option><option value="306">MaHtaLa</option><option value="307">NaHtaKa</option><option value="308">NgaThaYa</option><option value="309">NyaOuNa</option><option value="310">PaBaNa</option><option value="311">PaKaKha</option><option value="312">PaMaNa</option><option value="313">PaThaKa</option><option value="314">SaKaNa</option><option value="315">SaKaNa</option><option value="316">TaKaNa</option><option value="317">TaTaOu</option><option value="318">ThaPaKa</option><option value="319">TaThaNa</option><option value="320" selected="">ThaSaNa</option><option value="321">WaTaNa</option><option value="322">YaMaTha</option><option value="342">SaKaTa</option><option value="348">ZaBaTha</option><option value="349">DaKhaTha</option><option value="350">OuTaTha</option><option value="351">PaBaTha</option><option value="352">ZaYaTha</option><option value="370">NgaZaNa</option><option value="371">PaOuLa</option><option value="372">TaKaTa</option></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="form-control select2" id="nrc_nation_mm" name="nrc_nation_mm">
+                                                <option value="N" selected="">
+                                                    N
+                                                </option>
+                                                <option value="EH">
+                                                    EH
+                                                </option>
+                                                <option value="PYU">
+                                                    PYU
+                                                </option>
+                                                <option value="THA">
+                                                    THA
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Gender</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary1" name="r1">
+                                                <label for="radioPrimary1">
+                                                    Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary2" name="r1">
+                                                <label for="radioPrimary2">
+                                                    Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Address</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <textarea class="form-control" rows="3" placeholder=""></textarea>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">State/Region/Nay pyi taw territory</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select name="business_division_id" id="business_division_id" class="form-control">
+                                                <option value="1">Ayeyarwady</option>
+                                                <option value="2">Bago</option>
+                                                <option value="3">Chin</option>
+                                                <option value="4">Kachin</option>
+                                                <option value="5">Kayah</option>
+                                                <option value="6">Kayin</option>
+                                                <option value="7">Mandalay</option>
+                                                <option value="8">Magway</option>
+                                                <option value="9">Mon</option>
+                                                <option value="10">Naypyitaw</option>
+                                                <option value="11">Rakhine</option>
+                                                <option value="12">Sagaing</option>
+                                                <option value="13">Shan</option>
+                                                <option value="14">Tanintharyi</option>
+                                                <option value="15" selected="">Yangon</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Township</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select name="business_township_id" id="business_township_id" class="form-control">
+
+                                                <option value="334">(East) Dagon Myothit Township</option>
+                                                <option value="335">(North) Dagon Myothit Township</option>
+                                                <option value="337">(South) Dagon Myothit Township</option>
+                                                <option value="329">Ahlone Township</option>
+                                                <option value="330">Bahan Township</option>
+                                                <option value="331">Botahtaung Township</option>
+                                                <option value="332">Cocokyun Township</option>
+                                                <option value="336">Dagon Myothit Seikkan Township</option>
+                                                <option value="333">Dagon Township</option>
+                                                <option value="338">Dala Township</option>
+                                                <option value="339">Dawbon Township</option>
+                                                <option value="340" selected="">Hlaing Township</option>
+                                                <option value="341">Hlaingtharyar Township</option>
+                                                <option value="342">Hlegu Township</option>
+                                                <option value="343">Hmawbi Township</option>
+                                                <option value="344">Htantabin Township</option>
+                                                <option value="345">Insein Township</option>
+                                                <option value="346">Kamaryut Township</option>
+                                                <option value="347">Kawhmu Township</option>
+                                                <option value="348">Khayan Township</option>
+                                                <option value="349">Kungyangone Township</option>
+                                                <option value="350">Kyauktada Township</option>
+                                                <option value="352">Kyauktan Township</option>
+                                                <option value="353">Kyeemyindaing Township</option>
+                                                <option value="354">Lanmadaw Township</option>
+                                                <option value="355">Lathar Township</option>
+                                                <option value="356">Mayangone Township</option>
+                                                <option value="358">Mingalar Taung Nyunt Township</option>
+                                                <option value="357">Mingalardon Township</option>
+                                                <option value="365">North Okkalapa Township</option>
+                                                <option value="360">Pabedan Township</option>
+                                                <option value="361">Pazundaung Township</option>
+                                                <option value="362">Sanchaung Township</option>
+                                                <option value="363">Seikgyikhanaungto Township</option>
+                                                <option value="364">Seikkan Township</option>
+                                                <option value="366">Shwe Pyi Thar Township</option>
+                                                <option value="367">South Okkalapa Township</option>
+                                                <option value="370">Taik Kyi Township</option>
+                                                <option value="371">Tamwe Township</option>
+                                                <option value="372">Thaketa Township</option>
+                                                <option value="373">Thanlyin Township</option>
+                                                <option value="374">Thingangyun Township</option>
+                                                <option value="375">Thongwa Township</option>
+                                                <option value="376">Twantay Township</option>
+                                                <option value="377">Yankin Township</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Email</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Phone Number</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <h2 class="fs-title">Facts about Enterprise</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> The kind of owner</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option value="Family">Family</option>
+                                                <option value="Shareholder">Shareholder</option>
+                                                <option value="Family">Company Limited</option>
+                                                <option value="Family">Foreign Joint Venture Company</option>
+                                                <option value="Family">Private</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> Enterprise Employee</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option value="less than 5 people">less than 5 people</option>
+                                                <option value="5 ~ 10 people">5 ~ 10 people</option>
+                                                <option value="11 ~ 50 people">11 ~ 50 people</option>
+                                                <option value="51 ~ 75 people">51 ~ 75 people</option>
+                                                <option value="76 ~100 people">76 ~100 people</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> Last Annual Income</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option value="100">up to 100 million Kyats (Small)</option>
+                                                <option value="200">up to 200 million Kyats (Medium)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> Enterprise Category</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option value="100">Electricity, Gas, Steam & Air Conditioning Supply Service</option>
+                                                <option value="200">Accommodation & Food Service Activities</option>
+                                                <option value="200">Information & Communication Services</option>
+                                                <option value="200">Professional, Scientific & Technical Service Activities</option>
+                                                <option value="200">Health Care Service Activities</option>
+                                                <option value="200">Repair and Installation of Machinery & Equipment Services</option>
+                                                <option value="200">Agriculture, Livestock, Mineral & Forestry Service Activities</option>
+                                                <option value="200">Other Service Activities</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <h2 class="fs-title">Service Conditions</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Types of Service</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">All Types of Service</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">No. of Collaborative Companies</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">No. of Sub-Enterprise</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Number of Employees</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Capital Investment (Kyat)</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Annual income (Kyat)</label>
+                                            <span class="text-danger">*</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" value="" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">Recommendation condition from International Standard Organization</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary1" name="r1">
+                                                <label for="radioPrimary1">
+                                                    ISO 9001 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary2" name="r1">
+                                                <label for="radioPrimary2">
+                                                    ISO 14001 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary3" name="r1">
+                                                <label for="radioPrimary3">
+                                                    Other Certificate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary4" name="r1">
+                                                <label for="radioPrimary4">
+                                                    Nil
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a onclick="ShowSampleInformation('xxxxxxxx');"><i class="fa fa-question-circle"></i></a>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Main barrier or weakness</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> What kind of main barrier or weakness do you have?</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control">
+                                                <option value="100">The Business is started only now.</option>
+                                                <option value="200">The business is growing.</option>
+                                                <option value="200">The business is expanding to other field depending on current success of business.</option>
+                                                <option value="200">Although the business is stable but it has no progress.</option>
+                                                <option value="200">The business is decreasing.</option>
+                                                <option value="200">Other Businesses that you have worked</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> What kind of other barrier or weakness do you have?</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary1" name="r1">
+                                                <label for="radioPrimary1">
+                                                    Weak/ lack of Management ability &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div><br />
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary2" name="r1">
+                                                <label for="radioPrimary2">
+                                                    Weak/ lack of Technology &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div><br />
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary3" name="r1">
+                                                <label for="radioPrimary3">
+                                                    Unsufficient of financial capital &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div><br />
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary4" name="r1">
+                                                <label for="radioPrimary4">
+                                                    Lack/ insufficient of skilled human resource
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> Which type of item do you need to improve your business?</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ministry/ Department</th>
+                                                        <th colspan="3">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need knowledge to develop human resources</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[1]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[1]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[1]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Getting loan from bank</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[2]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[2]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[2]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need to cooperate with Foreign Investor</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[3]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[3]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[3]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need to get Information from Foreign</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[4]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[4]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[4]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need Technical Transfer</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[5]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[5]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[5]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need to support for innovation of new products</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[6]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[6]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[6]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need to expand local market than now</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[7]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[7]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[7]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need to get market information</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[8]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[8]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[8]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Need to understand the legislation concerned with business</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[9]" value="1" checked="">
+                                                                <label>Need</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[9]" value="2">
+                                                                <label>Fair</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="need_improve[9]" value="3">
+                                                                <label>Nil</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> How do you connect your business with other ASEAN countries, South-East Asia Nations, West Nations?</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary1" name="r1">
+                                                <label for="radioPrimary1">
+                                                    Exporting Products for Foreign Company &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div><br />
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary2" name="r1">
+                                                <label for="radioPrimary2">
+                                                    Exporting respective foreign country from local export company &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div><br />
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary3" name="r1">
+                                                <label for="radioPrimary3">
+                                                    Direct exporting purchasing Association &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </label>
+                                            </div><br />
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="radioPrimary4" name="r1">
+                                                <label for="radioPrimary4">
+                                                    Establishing branch office / branch Company
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label"> Which type of item do you need to improve your business?</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ministry/ Department</th>
+                                                        <th colspan="4">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Agriculture, Livestock and Irrigation</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[1]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[1]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[1]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(1)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Post and Telecommunication</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[2]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[2]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[2]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(2)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Natural Resources and Environment Conservation</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[3]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[3]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[3]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(3)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Electricity and Energy</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[4]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[4]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[4]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(4)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Labour, Immigration and Population</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[5]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[5]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[5]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(5)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Planning, Finance and Industry</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[6]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[6]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[6]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(6)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Health</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[7]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[7]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[7]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(7)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Education</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[8]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[8]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[8]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(8)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Construction</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[9]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[9]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[9]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(9)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Social Welfare, Relief and Resettlement</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[10]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[10]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[10]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(10)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Hotels and Tourism</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[11]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[11]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[11]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(11)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Commerce</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[12]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[12]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[12]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(12)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Ministry of Information</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[13]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[13]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[13]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(13)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Directorate of Industrial Supervision and Inspection</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[14]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[14]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[14]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(14)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Directorate of Investment and Company Administration (DICA)</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[15]" value="1" checked="">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[15]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[15]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(15)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Yangon City Development Committee</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[16]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[16]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[16]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(16)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Other Ministries</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[17]" value="1">
+                                                                <label>Registration</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[17]" value="2">
+                                                                <label>License</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="radio" name="licensed_department[17]" value="3">
+                                                                <label>Permit</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn pull-right" type="button" onclick="clearLicensedRadio(17)"><span class="fa fa-remove"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div> 
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
+                                <input type="button" name="make_payment" class="next action-button" value="Next" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title text-center">Attachments</h2>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">
+                                                Permit Image
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="file" name="name" value="" />
+                                            <button type="button" class="btn btn-default">Upload</button>
+                                        </div>
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">
+                                                NRIC Image <span class="text-danger">*</span>
+                                            </label>
+                                            <br />
+                                            <span class="text-bold">You will need to upload both sides.</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="file" name="name" value="" />
+                                            <button type="button" class="btn btn-default">Upload</button>
+                                        </div>
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-label">
+                                                Household Image
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <br />
+                                            <span class="text-bold">You will need to upload both sides.</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="file" name="name" value="" />
+                                            <button type="button" class="btn btn-default">Upload</button>
+                                        </div>
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <a href="~/themes/dist/SME_Form_R.pdf" name="make_payment" class="btn btn-warning btn-lg" target="_blank">Preview</a>
+                                <a href="@Url.Action("Listing", "Business")" name="make_payment" class="btn btn-primary btn-lg" >Submit</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sample Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span id="txtSample"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+
+        $(".next").click(function () {
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({ 'opacity': opacity });
+                },
+                duration: 600
+            });
+        });
+
+        $(".previous").click(function () {
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    previous_fs.css({ 'opacity': opacity });
+                },
+                duration: 600
+            });
+        });
+
+        $('.radio-group .radio').click(function () {
+            $(this).parent().find('.radio').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        $(".submit").click(function () {
+            return false;
+        })
+
+    });
+
+    function ShowSampleInformation(txt) {
+        $("#txtSample").html(txt);
+        $('#exampleModal').modal('show');
+    }
+</script>
